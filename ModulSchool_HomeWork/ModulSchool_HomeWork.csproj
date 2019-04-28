@@ -18,25 +18,4 @@
         <PackageReference Include="Npgsql" Version="4.0.6" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Compile Remove="Models\AddUser.cs" />
-      <Compile Remove="Models\IAddUser.cs" />
-      <Compile Remove="Models\IAddUserResult.cs" />
-      <Compile Remove="AddUserConsumer.cs" />
-      <Compile Remove="Config\**" />
-      <Compile Remove="Models\AddUserResult.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Remove="Config\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="Config\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Remove="Config\**" />
-    </ItemGroup>
-
 </Project>
