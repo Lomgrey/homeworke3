@@ -20,7 +20,7 @@ namespace ModulSchool_HomeWork.BuisnessLogic
         {
             user.Id = Guid.NewGuid();
 
-            _busControl.Send(new AddUserCommand()
+            _busControl.Send(new AddUserCommand
             {
                 User = user
             });
