@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ModulSchool_HomeWork.BuisnessLogic;
@@ -12,23 +10,28 @@ namespace ModulSchool_HomeWork.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly UsersInfoRequestHandler _usersInfoRequestHandler;
+        private readonly GetUsersInfoRequestHandler _getUsersInfoRequestHandler;
+        private readonly AddUserRequestHandler _addUserRequestHandler;
 
-        public UsersController(UsersInfoRequestHandler usersInfoRequestHandler)
+        public UsersController(GetUsersInfoRequestHandler getUsersInfoRequestHandler, AddUserRequestHandler addUserRequestHandler)
         {
-            _usersInfoRequestHandler = usersInfoRequestHandler;
+            _getUsersInfoRequestHandler = getUsersInfoRequestHandler;
+            _addUserRequestHandler = addUserRequestHandler;
         }
 
         [HttpGet("{id}")]
-        public Task<User> GetUserInfo(long id)
+        public Task<User> GetUserInfo(Guid id)
         {
-            return _usersInfoRequestHandler.Handle(id);
+            return _getUsersInfoRequestHandler.Handle(id);
         }
 
-        [HttpPost]
-        public Task<AddUserResult> AddOrUpdateUserInfo(User user)
+        [HttpPost("add")]
+        public Task<User> AddOrUpdateUserInfo([FromBody]User user)
         {
-            return _usersInfoRequestHandler.Handle(user);
+            var id = Guid.NewGuid();
+            user.Id = id;
+            
+            return _addUserRequestHandler.Handle(user);
         }
     }
 }

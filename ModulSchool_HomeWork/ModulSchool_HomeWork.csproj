@@ -8,15 +8,23 @@
     <ItemGroup>
         <PackageReference Include="Dapper" Version="1.60.6" />
         <PackageReference Include="MassTransit" Version="5.5.0-develop.2000" />
+        <PackageReference Include="MassTransit.AzureServiceBus" Version="5.5.0-develop.2000" />
+        <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="5.5.0-develop.2000" />
         <PackageReference Include="MassTransit.Log4Net" Version="5.5.0-develop.2000" />
         <PackageReference Include="MassTransit.RabbitMQ" Version="5.5.0-develop.2000" />
+        <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
         <PackageReference Include="Microsoft.AspNetCore.App" />
         <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
         <PackageReference Include="Npgsql" Version="4.0.6" />
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Remove="Models\AddUser.cs" />
+      <Compile Remove="Models\IAddUser.cs" />
+      <Compile Remove="Models\IAddUserResult.cs" />
+      <Compile Remove="AddUserConsumer.cs" />
       <Compile Remove="Config\**" />
+      <Compile Remove="Models\AddUserResult.cs" />
     </ItemGroup>
 
     <ItemGroup>

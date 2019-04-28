@@ -6,7 +6,7 @@ namespace ModulSchool_HomeWork.Services.Interfaces
 {
     public interface IUserInfoService
     {
-        Task<User> GetById(long id);
-        Task<AddUserResult> AddNewUser(User user);
+        Task<User> GetById(Guid id);
+        Task AddNewUser(User user);
     }
 }

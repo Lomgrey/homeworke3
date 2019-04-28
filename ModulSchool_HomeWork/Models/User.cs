@@ -6,7 +6,7 @@ namespace ModulSchool_HomeWork.Models
 {
     public class User
     {
-       public long Id { get; set; }
+       public Guid Id { get; set; }
        
        [JsonProperty(PropertyName = "email")]
        public string Email { get; set; }
@@ -16,10 +16,5 @@ namespace ModulSchool_HomeWork.Models
        
        [JsonProperty(PropertyName = "phone")]
        public string Phone { get; set; }
-
-       public bool IsInitialize()
-       {
-           return Email != null && Nickname != null && Phone != null;
-       }
     }
 }
