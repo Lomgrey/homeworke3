@@ -26,7 +26,7 @@ namespace ModulSchool_HomeWork.Controllers
         }
 
         [HttpPost("add")]
-        public Task<User> AddOrUpdateUserInfo([FromBody]User user)
+        public Task<User> AddUserInfo([FromBody]User user)
         {
             var id = Guid.NewGuid();
             user.Id = id;

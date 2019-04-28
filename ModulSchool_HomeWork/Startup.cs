@@ -1,4 +1,5 @@
-﻿using MassTransit;
+﻿using GreenPipes;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -35,12 +36,14 @@ namespace ModulSchool_HomeWork
             services.AddMassTransit(x =>
             {
                 x.AddConsumer<AddUserConsumer>();
-                x.AddBus(provider => Bus.Factory.CreateUsingInMemory(cfg =>
+                x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
                 {
-//                    var host = cfg.Host("localhost", "/", h => { });
+                    var host = cfg.Host("localhost", "/", h => { });
                     
-                    cfg.ReceiveEndpoint("add-user", e =>
+                    cfg.ReceiveEndpoint(host, "add-user", e =>
                     {
+                        e.PrefetchCount = 16;
+                        
                         e.ConfigureConsumer<AddUserConsumer>(provider);
                         EndpointConvention.Map<AddUserCommand>(e.InputAddress);
                     });

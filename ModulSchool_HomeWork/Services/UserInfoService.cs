@@ -26,7 +26,7 @@ namespace ModulSchool_HomeWork.Services
         {
             using (var connection = new NpgsqlConnection(ConnectionString))
             {
-                const string query = "insert into sdemo.users3 (id, email, nickname, phone) values (@id, @email, @nickname, @phone)";
+                const string query = "insert into sdemo.users (id, email, nickname, phone) values (@id, @email, @nickname, @phone)";
 
                 await connection.QuerySingleAsync<User>(query, user);
             }
